@@ -1,11 +1,15 @@
 import { useState } from "react"
 import usePlayerStore from "../state/playerStore"
+import useWebSocketStore from "../state/webSocketStore"
 import { CreatePlayerMessage } from "../types"
 import StartOrJoin from "./StartOrJoin"
 
-const NameEntry = ({ws}: {ws: WebSocket}) => {
+const NameEntry = () => {
+    const ws = useWebSocketStore(state => state.ws)
     const [playerName, setPlayerName] = useState('')
     const player = usePlayerStore(state => state.player)
+
+    if (!ws) return <div>Error: not connected to websocket</div>
 
     const handleSubmit = (evt: { preventDefault: () => void }) => {
         evt.preventDefault()

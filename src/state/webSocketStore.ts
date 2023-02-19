@@ -3,7 +3,7 @@ import { devtools, persist } from 'zustand/middleware'
 
 interface WebSocketState {
     ws: WebSocket | null,
-    update: (updatedWebSocket: WebSocket | null) => void
+    update: (updatedWs: WebSocket | null) => void
 }
 
 const useWebSocketStore = create<WebSocketState>()(
@@ -11,7 +11,7 @@ const useWebSocketStore = create<WebSocketState>()(
         persist(
             (set) => ({
                 ws: null,
-                update: (updatedWebSocket: WebSocket | null) => set((state) => ({ ws: updatedWebSocket })),
+                update: (updatedWs: WebSocket | null) => set((state) => ({ ws: updatedWs }))
             }),
             {
                 name: 'websocket-storage',
