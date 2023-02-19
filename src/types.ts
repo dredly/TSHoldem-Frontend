@@ -24,7 +24,8 @@ export interface Game {
     deck: Card[],
     cardsOnTable: Card[]
     pot: number,
-    betAmount: number
+    betAmount: number,
+    started: boolean
 }
 
 export interface CreatePlayerMessage {
@@ -40,7 +41,11 @@ export interface JoinGameMessage {
     gameId: String
 }
 
-export type ClientMessage = CreatePlayerMessage | CreateGameMessage | JoinGameMessage
+export interface StartGameMessage {
+    gameId: String
+}
+
+export type ClientMessage = CreatePlayerMessage | CreateGameMessage | JoinGameMessage | StartGameMessage
 
 export interface PlayerCreatedMessage {
     player: Player
@@ -50,4 +55,12 @@ export interface GameCreatedMessage {
     game: Game
 }
 
-export type ServerMessage = PlayerCreatedMessage | GameCreatedMessage
+export interface GameJoinedMessage {
+    gameJoined: Game
+}
+
+export interface GameStartedMessage {
+    gameStarted: Game
+}
+
+export type ServerMessage = PlayerCreatedMessage | GameCreatedMessage | GameJoinedMessage | GameStartedMessage

@@ -1,4 +1,15 @@
-import { GameCreatedMessage, Player, PlayerCreatedMessage, Role, Suit, ServerMessage, Card, Game } from "./types";
+import { 
+    GameCreatedMessage, 
+    Player, 
+    PlayerCreatedMessage, 
+    Role, 
+    Suit, 
+    ServerMessage, 
+    Card, 
+    Game, 
+    GameJoinedMessage, 
+    GameStartedMessage 
+} from "./types";
 
 const isString = (text: unknown): text is string => {
     return typeof text === 'string' || text instanceof String;
@@ -43,6 +54,7 @@ const isGame = (game: unknown): game is Game => {
         && (game as Game).deck !== undefined && isCardsArray((game as Game).deck)
         && (game as Game).cardsOnTable !== undefined && isCardsArray((game as Game).cardsOnTable)
         && (game as Game).players !== undefined && isPlayersArray((game as Game).players)
+        && (game as Game).started !== undefined && typeof (game as Game).started === 'boolean'
 }
 
 export const isPlayerCreatedMessage = (message: unknown): message is PlayerCreatedMessage => {
@@ -55,6 +67,16 @@ export const isGameCreatedMessage = (message: unknown): message is GameCreatedMe
         && isGame((message as GameCreatedMessage).game)
 }
 
+export const isGameJoinedMessage = (message: unknown): message is GameJoinedMessage => {
+    return (message as GameJoinedMessage).gameJoined !== undefined
+        && isGame((message as GameJoinedMessage).gameJoined)
+}
+
+export const isGameStartedMessage = (message: unknown): message is GameStartedMessage => {
+    return (message as GameStartedMessage).gameStarted !== undefined
+        && isGame((message as GameStartedMessage).gameStarted)
+}
+
 export const isServerMessage = (obj: unknown): obj is ServerMessage => {
-    return isPlayerCreatedMessage(obj) || isGameCreatedMessage(obj)
+    return isPlayerCreatedMessage(obj) || isGameCreatedMessage(obj) || isGameJoinedMessage(obj) || isGameStartedMessage(obj)
 }

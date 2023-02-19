@@ -2,7 +2,7 @@ import { useEffectOnceWhen } from "rooks";
 import { useState } from "react";
 import NameEntry from "./components/NameEntry"
 import { parseServerMessage } from "./parsers";
-import { isGameCreatedMessage, isPlayerCreatedMessage } from "./typeGuards";
+import { isGameCreatedMessage, isGameJoinedMessage, isGameStartedMessage, isPlayerCreatedMessage } from "./typeGuards";
 import usePlayerStore from "./state/playerStore";
 import useWebSocketStore from "./state/webSocketStore";
 import useGameStore from "./state/gameStore";
@@ -40,6 +40,14 @@ const App = () => {
         if (isGameCreatedMessage(serverMessage)) {
           console.log("GAME CREATED")
           updateGame(serverMessage.game)
+        }
+        if (isGameJoinedMessage(serverMessage)) {
+          console.log("GAME JOINED")
+          updateGame(serverMessage.gameJoined)
+        }
+        if (isGameStartedMessage(serverMessage)) {
+          console.log("GAME STARTED")
+          updateGame(serverMessage.gameStarted)
         }
       } catch (err) {
         if (err instanceof Error) {
