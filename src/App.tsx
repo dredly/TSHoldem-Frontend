@@ -1,8 +1,8 @@
-import PlayingCard from "./components/PlayingCard"
+import GameSpace from "./components/GameSpace"
 
 const App = () => {
   return (
-    <PlayingCard />
+    <GameSpace />
   )
 }
 

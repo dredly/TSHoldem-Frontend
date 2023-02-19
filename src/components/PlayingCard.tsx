@@ -1,20 +1,10 @@
 import backOfCard from "../assets/backOfCard.svg"
-import frontOfCard from "../assets/5-of-hearts.svg"
 import { useState } from "react"
+import { Card } from "../types"
+import { getAssetForCard } from "../utils"
 
-const PlayingCard = ({ assetName }: { assetName: String }) => {
-    // Placeholder hardcoded card
-    const [flipped, setFlipped] = useState<boolean>(false)
-
-    return (
-        <>
-            <button onClick={() => setFlipped(!flipped)}>Flip card</button>
-            <div>
-                5 of Hearts
-                <img src={flipped ? frontOfCard : backOfCard}></img>
-            </div>
-        </>
-    )
+const PlayingCard = ({ card }: { card: Card}) => {
+    return <img src={getAssetForCard(card).toString()}></img>
 }
 
 export default PlayingCard
