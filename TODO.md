@@ -1,3 +1,3 @@
-- [ ] Create player functionality with backend
-- [ ] Create game functionality with backend
+- [x] Create player functionality with backend
+- [x] Create game functionality with backend
 - [ ] Some way of syncing certain types with backend
