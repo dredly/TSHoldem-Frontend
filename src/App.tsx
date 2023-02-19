@@ -3,9 +3,12 @@ import { useState } from "react";
 import NameEntry from "./components/NameEntry"
 import { parseServerMessage } from "./parsers";
 import { isPlayerCreatedMessage } from "./typeGuards";
+import usePlayerStore from "./state/playerStore";
+import useWebSocketStore from "./state/webSocketStore";
 
 const App = () => {
-  const [ws, setWs] = useState<WebSocket | null >(null);
+  const ws = useWebSocketStore(state => state.ws)
+  const updatePlayer = usePlayerStore(state => state.update)
 
   useEffectOnceWhen(() => {
     console.log("using effect")
@@ -21,7 +24,8 @@ const App = () => {
         try {
           const serverMessage = parseServerMessage(obj)
           if (isPlayerCreatedMessage(serverMessage)) {
-            console.log("its a legit playercreated message hahahaha")
+            console.log("PLAYER CREATED")
+            updatePlayer(serverMessage.player)
           }
         } catch (err) {
           if (err instanceof Error) {

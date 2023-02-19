@@ -1,8 +1,11 @@
 import { useState } from "react"
+import usePlayerStore from "../state/playerStore"
 import { CreatePlayerMessage } from "../types"
+import StartOrJoin from "./StartOrJoin"
 
 const NameEntry = ({ws}: {ws: WebSocket}) => {
     const [playerName, setPlayerName] = useState('')
+    const player = usePlayerStore(state => state.player)
 
     const handleSubmit = (evt: { preventDefault: () => void }) => {
         evt.preventDefault()
@@ -24,6 +27,7 @@ const NameEntry = ({ws}: {ws: WebSocket}) => {
                 </label>
                 <button type="submit">Confirm</button>
             </form>
+            {player ? <StartOrJoin /> : "player not yet created"}
         </div>
     )
 }
