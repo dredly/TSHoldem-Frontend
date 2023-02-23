@@ -1,27 +1,12 @@
 import styled from 'styled-components'
 import useGameStore from '../state/gameStore'
+import { GameContainer, HorizontalContainer, GameTable } from '../styledcomponents/gameComponents'
 import { Game } from "../types"
 import PlayingCard from './PlayingCard'
+import BottomSeats from './seats/BottomSeats'
+import LeftSeat from './seats/LeftSeat'
 import RightSeat from './seats/RightSeat'
-
-const GameContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-`
-
-const GameTable = styled.div`
-    background: #183A1D;
-    width: 1000px;
-    height: 500px;
-`
-
-const HorizontalContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
+import TopSeats from './seats/TopSeats'
 
 const GameInPlay = ({ game }: { game: Game}) => {
     const originalPlayerOrder = useGameStore(state => state.originalPlayerOrder)
@@ -41,13 +26,15 @@ const GameInPlay = ({ game }: { game: Game}) => {
         <>
             <GameContainer>
                 <p>Money in pot = <strong>${game.pot}</strong></p>
+                <TopSeats playersInOriginalOrder={playersInOriginalOrder}/>
                 <HorizontalContainer>
-                    <div>{playersInOriginalOrder[0].name} - {playersInOriginalOrder[0].role.toLowerCase()}</div>
+                    <LeftSeat playersInOriginalOrder={playersInOriginalOrder}/>
                     <GameTable>
                         {game.deck.slice(0, 5).map(c => <PlayingCard card={c} key={c.rank.toString() + c.suit}/>)}
                     </GameTable>
                     <RightSeat playersInOriginalOrder={playersInOriginalOrder}/>
                 </HorizontalContainer>
+                <BottomSeats playersInOriginalOrder={playersInOriginalOrder}/>
             </GameContainer>
         </>
     )

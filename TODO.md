@@ -1,8 +1,9 @@
 - [x] Create player functionality with backend
 - [x] Create game functionality with backend
 - [ ] Basic styling of games
-    - [ ] Place players around mat
-        - [ ] Seat Components
+    - [x] Place players around mat
+        - [x] Seat Components
+        - [x] Placement
     - [ ] Find good svg for back of card
     - [ ] Align mat and cards on it
     - [ ] Some indication of whats going on with betting

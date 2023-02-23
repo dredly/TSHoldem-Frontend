@@ -1,17 +1,18 @@
 import { Player } from "../../types"
+import PlayerInGame from "../PlayerInGame"
 
 const RightSeat = ({ playersInOriginalOrder }: { playersInOriginalOrder: Player[] }) => {
     if ([2, 3].includes(playersInOriginalOrder.length)) {
-        return <div>{playersInOriginalOrder[1].name} - {playersInOriginalOrder[1].role.toLowerCase()}</div>
+        return <PlayerInGame player={playersInOriginalOrder[1]}/>
     }
     if ([4, 5].includes(playersInOriginalOrder.length)) {
-        return <div>{playersInOriginalOrder[2].name} - {playersInOriginalOrder[2].role.toLowerCase()}</div>
+        return <PlayerInGame player={playersInOriginalOrder[2]}/>
     }
     if ([6, 7].includes(playersInOriginalOrder.length)) {
-        return <div>{playersInOriginalOrder[3].name} - {playersInOriginalOrder[3].role.toLowerCase()}</div> 
+        return <PlayerInGame player={playersInOriginalOrder[3]}/>
     }
     if (playersInOriginalOrder.length === 8) {
-        return <div>{playersInOriginalOrder[4].name} - {playersInOriginalOrder[4].role.toLowerCase()}</div>
+        return <PlayerInGame player={playersInOriginalOrder[4]}/>
     }
     
     // Should never hit this
