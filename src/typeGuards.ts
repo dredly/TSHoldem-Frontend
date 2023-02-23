@@ -8,7 +8,8 @@ import {
     Card, 
     Game, 
     GameJoinedMessage, 
-    GameStartedMessage 
+    GameStartedMessage, 
+    GameUpdatedMessage
 } from "./types";
 
 const isString = (text: unknown): text is string => {
@@ -77,6 +78,15 @@ export const isGameStartedMessage = (message: unknown): message is GameStartedMe
         && isGame((message as GameStartedMessage).gameStarted)
 }
 
+export const isGameUpdatedMessage = (message: unknown): message is GameUpdatedMessage => {
+    return (message as GameUpdatedMessage).gameUpdated !== undefined
+        && isGame((message as GameUpdatedMessage).gameUpdated)
+}
+
 export const isServerMessage = (obj: unknown): obj is ServerMessage => {
-    return isPlayerCreatedMessage(obj) || isGameCreatedMessage(obj) || isGameJoinedMessage(obj) || isGameStartedMessage(obj)
+    return isPlayerCreatedMessage(obj) 
+        || isGameCreatedMessage(obj) 
+        || isGameJoinedMessage(obj) 
+        || isGameStartedMessage(obj)
+        || isGameUpdatedMessage(obj)
 }

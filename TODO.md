@@ -10,6 +10,8 @@
     - [x] Some indication of whats going on with betting
     - [x] Show player cards and money
 - [ ] Integration with backend functionality
+    - [x] Only show cards on table which have been revealed
+    - [ ] Give players functionality to make bet 
 - [ ] Niceties
     - [ ] Eliminate repetition in styled components for game
     - [ ] Eliminate repetition in PlayerInGame component

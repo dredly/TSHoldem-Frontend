@@ -23,6 +23,7 @@ const GameLobby = ({ game }: { game: Game}) => {
 
     return (
         <>
+            <h1>{game.players[0].name}'s game</h1>
             <h3>{game.players.length}/8 players</h3>
             <p>Unique id to join game: <strong>{game.id}</strong></p>
             <button>Leave</button>
