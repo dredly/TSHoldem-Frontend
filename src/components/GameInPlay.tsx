@@ -1,7 +1,7 @@
-import styled from 'styled-components'
 import useGameStore from '../state/gameStore'
 import { GameContainer, HorizontalContainer, GameTable } from '../styledcomponents/gameComponents'
 import { Game } from "../types"
+import BackOfCard from './BackOfCard'
 import PlayingCard from './PlayingCard'
 import BottomSeats from './seats/BottomSeats'
 import LeftSeat from './seats/LeftSeat'
@@ -30,6 +30,7 @@ const GameInPlay = ({ game }: { game: Game}) => {
                 <HorizontalContainer>
                     <LeftSeat playersInOriginalOrder={playersInOriginalOrder}/>
                     <GameTable>
+                        <BackOfCard />
                         {game.deck.slice(0, 5).map(c => <PlayingCard card={c} key={c.rank.toString() + c.suit}/>)}
                     </GameTable>
                     <RightSeat playersInOriginalOrder={playersInOriginalOrder}/>

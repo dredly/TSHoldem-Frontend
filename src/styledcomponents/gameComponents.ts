@@ -13,6 +13,10 @@ export const GameTable = styled.div`
     background: #183A1D;
     width: 1000px;
     height: 500px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 export const HorizontalContainer = styled.div`
@@ -37,4 +41,8 @@ export const ReversedPlayersContainer = styled.div`
 
 export const PlayerHolder = styled.div`
     background: pink;
+`
+
+export const CurrentPlayerHolder = styled.div`
+    background: lightblue;
 `
