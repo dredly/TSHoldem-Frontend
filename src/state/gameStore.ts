@@ -1,10 +1,13 @@
 import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
-import { Game } from '../types'
+import { Game, Player } from '../types'
 
 interface GameState {
     game: Game | null,
-    update: (updatedGame: Game | null) => void
+    // originalPlayerOrder used to keep track of order players started off in for rendering purposes, by their ids
+    originalPlayerOrder: String[],
+    updateGame: (updatedGame: Game | null) => void,
+    updateOriginalPlayerOrder: (playerOrder: String[]) => void
 }
 
 const useGameStore = create<GameState>()(
@@ -12,7 +15,9 @@ const useGameStore = create<GameState>()(
         persist(
             (set) => ({
                 game: null,
-                update: (updatedGame: Game | null) => set((state) => ({ game: updatedGame })),
+                originalPlayerOrder: [],
+                updateGame: (updatedGame: Game | null) => set((state) => ({ game: updatedGame })),
+                updateOriginalPlayerOrder: (playerOrder: String[]) => set((state) => ({ originalPlayerOrder: playerOrder }))
             }),
             {
                 name: 'game-storage',

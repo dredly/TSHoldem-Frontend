@@ -1,8 +1,19 @@
 - [x] Create player functionality with backend
 - [x] Create game functionality with backend
-- [ ] Basic styling of games
-    - [ ] Find good svg for back of card
-    - [ ] Align mat and cards on it
-    - [ ] Place players around mat
-    - [ ] Some indication of whats going on with betting
-- [ ] Some way of syncing certain types with backend
+- [x] Basic styling of games
+    - [x] Place players around mat
+        - [x] Seat Components
+        - [x] Placement
+    - [x] Find good svg for back of card
+    - [x] Distinguish current player from others
+    - [x] Align mat and cards on it (including back of card)
+    - [x] Some indication of whats going on with betting
+    - [x] Show player cards and money
+- [ ] Integration with backend functionality
+- [ ] Niceties
+    - [ ] Eliminate repetition in styled components for game
+    - [ ] Eliminate repetition in PlayerInGame component
+    - [ ] Script to sync relevant types with backend
+    - [ ] Eslint
+- [ ] Proper styling
+    - [ ] Only show cards the current player should see

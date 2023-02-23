@@ -13,12 +13,14 @@ const App = () => {
   const game = useGameStore(state => state.game)
   const updateWs = useWebSocketStore(state => state.update)
   const updatePlayer = usePlayerStore(state => state.update)
-  const updateGame = useGameStore(state => state.update)
+  const updateGame = useGameStore(state => state.updateGame)
+  const updatePlayingOrder = useGameStore(state => state.updateOriginalPlayerOrder)
 
   useEffectOnceWhen(() => {
     updateWs(new WebSocket("ws://localhost:8080"))
     updatePlayer(null)
     updateGame(null)
+    updatePlayingOrder([])
   })
 
   if (!ws) return <div>Connecting...</div>
@@ -48,6 +50,7 @@ const App = () => {
         if (isGameStartedMessage(serverMessage)) {
           console.log("GAME STARTED")
           updateGame(serverMessage.gameStarted)
+          updatePlayingOrder(serverMessage.gameStarted.players.map(p => p.id))
         }
       } catch (err) {
         if (err instanceof Error) {
