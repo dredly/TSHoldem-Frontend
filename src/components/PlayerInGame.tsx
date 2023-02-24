@@ -20,7 +20,7 @@ const PlayerInGame = ({ player }: { player: Player }) => {
                 <p>Bet: ${player.moneyInPot}</p>
                 {player.cards.map(c => <PlayingCard card={c} key={c.rank.toString() + c.suit}/>)}
                 {currentPlayer.id === bettingPlayer.id 
-                    ? <BettingForm minBet={amountToBet - player.moneyInPot} maxBet={player.money}/> 
+                    ? <BettingForm minBet={amountToBet - player.moneyInPot} maxBet={player.money} playerId={player.id}/> 
                     : null
                 }  
             </CurrentPlayerHolder>

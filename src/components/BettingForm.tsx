@@ -1,11 +1,19 @@
 import { useState } from "react"
+import useWebSocketStore from "../state/webSocketStore"
+import { BetMessage } from "../types"
 
-const BettingForm = ({minBet, maxBet}: {minBet: number, maxBet: number}) => {
+const BettingForm = ({minBet, maxBet, playerId}: {minBet: number, maxBet: number, playerId: String}) => {
+    const ws = useWebSocketStore(state => state.ws)
     const [bet, setBet] = useState<number>(minBet)
 
     const handleSubmit = (evt: { preventDefault: () => void }) => {
         evt.preventDefault()
         console.log("Submitting bet")
+        const betMessage: BetMessage = {
+            playerId,
+            amount: bet
+        }
+        ws?.send(JSON.stringify(betMessage))
     }
 
     const handleFold = () => {
