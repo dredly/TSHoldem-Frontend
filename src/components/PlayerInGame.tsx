@@ -1,10 +1,16 @@
+import useGameStore from "../state/gameStore";
 import usePlayerStore from "../state/playerStore";
 import { CurrentPlayerHolder, PlayerHolder } from "../styledcomponents/gameComponents";
 import { Player } from "../types";
+import BackOfCard from "./BackOfCard";
+import BettingForm from "./BettingForm";
 import PlayingCard from "./PlayingCard";
 
 const PlayerInGame = ({ player }: { player: Player }) => {
     const currentPlayer = usePlayerStore(state => state.player)
+    const bettingPlayer = useGameStore(state => state.game?.players[0])
+    if (!bettingPlayer) return <div>Error</div>
+
     if (currentPlayer && currentPlayer.id === player.id) {
         return (
             <CurrentPlayerHolder>
@@ -12,6 +18,7 @@ const PlayerInGame = ({ player }: { player: Player }) => {
                 <h4>Current money: ${player.money}</h4> 
                 <p>Bet: ${player.moneyInPot}</p>
                 {player.cards.map(c => <PlayingCard card={c} key={c.rank.toString() + c.suit}/>)}
+                {currentPlayer.id === bettingPlayer.id ? <BettingForm minBet={5} maxBet={12}/> : null}  
             </CurrentPlayerHolder>
         )
     }
@@ -20,7 +27,7 @@ const PlayerInGame = ({ player }: { player: Player }) => {
             <h3>{player.name} - {player.role.toLowerCase().replace("_", " ")}</h3>
             <h4>Current money: ${player.money}</h4>
             <p>Bet: ${player.moneyInPot}</p>
-            {player.cards.map(c => <PlayingCard card={c} key={c.rank.toString() + c.suit}/>)}
+            {player.cards ? <><BackOfCard /><BackOfCard /></> : null}      
         </PlayerHolder>
     )
 }

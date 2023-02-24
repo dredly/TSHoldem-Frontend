@@ -9,6 +9,7 @@
     - [x] Align mat and cards on it (including back of card)
     - [x] Some indication of whats going on with betting
     - [x] Show player cards and money
+- [x] Only show cards the current player should see
 - [ ] Integration with backend functionality
     - [x] Only show cards on table which have been revealed
     - [ ] Give players functionality to make bet 
@@ -17,5 +18,3 @@
     - [ ] Eliminate repetition in PlayerInGame component
     - [ ] Script to sync relevant types with backend
     - [ ] Eslint
-- [ ] Proper styling
-    - [ ] Only show cards the current player should see
