@@ -12,7 +12,9 @@
 - [x] Only show cards the current player should see
 - [ ] Integration with backend functionality
     - [x] Only show cards on table which have been revealed
-    - [ ] Give players functionality to make bet 
+    - [ ] Give players functionality to make be
+        - [x] Betting form component 
+        - [ ] Send message to backend when bet is made
 - [ ] Niceties
     - [ ] Eliminate repetition in styled components for game
     - [ ] Eliminate repetition in PlayerInGame component
