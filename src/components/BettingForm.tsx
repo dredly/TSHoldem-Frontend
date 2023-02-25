@@ -1,6 +1,6 @@
 import { useState } from "react"
 import useWebSocketStore from "../state/webSocketStore"
-import { BetMessage } from "../types"
+import { BetMessage, FoldMessage } from "../types"
 
 const BettingForm = ({minBet, maxBet, playerId}: {minBet: number, maxBet: number, playerId: String}) => {
     const ws = useWebSocketStore(state => state.ws)
@@ -18,6 +18,10 @@ const BettingForm = ({minBet, maxBet, playerId}: {minBet: number, maxBet: number
 
     const handleFold = () => {
         console.log("Folding")
+        const foldMessage: FoldMessage = {
+            foldingPlayerId: playerId
+        }
+        ws?.send(JSON.stringify(foldMessage))
     }
 
     return (

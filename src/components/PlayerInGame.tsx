@@ -16,6 +16,7 @@ const PlayerInGame = ({ player }: { player: Player }) => {
         return (
             <CurrentPlayerHolder>
                 <h2>ME- {player.role.toLowerCase().replace("_", " ")}</h2>
+                {player.inPlay ? null : <h3>FOLDED</h3>}
                 <h4>Current money: ${player.money}</h4> 
                 <p>Bet: ${player.moneyInPot}</p>
                 {player.cards.map(c => <PlayingCard card={c} key={c.rank.toString() + c.suit}/>)}
@@ -29,6 +30,7 @@ const PlayerInGame = ({ player }: { player: Player }) => {
     return (
         <PlayerHolder>
             <h3>{player.name} - {player.role.toLowerCase().replace("_", " ")}</h3>
+            {player.inPlay ? null : <h3>FOLDED</h3>}
             <h4>Current money: ${player.money}</h4>
             <p>Bet: ${player.moneyInPot}</p>
             {player.cards ? <><BackOfCard /><BackOfCard /></> : null}      

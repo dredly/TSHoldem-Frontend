@@ -18,7 +18,9 @@
         - [x] Send message to backend when bet is made
         - [x] Update frontend and move onto next player
             - [x] Fix bug where update to player whos turn it is to bet is not reflected in render
-    - [ ] Allow players to fold
+    - [x] Allow players to fold
+    - [ ] Fix weirdness with detecting when round of betting is over (might involve backend)
+    - [ ] Reveal the flop when first round of betting is over
 - [ ] Niceties
     - [ ] Eliminate repetition in styled components for game
     - [ ] Eliminate repetition in PlayerInGame component
