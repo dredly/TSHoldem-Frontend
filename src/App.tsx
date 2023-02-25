@@ -30,7 +30,6 @@ const App = () => {
   }
   ws.onmessage = message => {
     console.log("m e s s a g e    r e c e i v e d")
-    console.log(message.data)
     try {
       const obj = JSON.parse(message.data)
       try {

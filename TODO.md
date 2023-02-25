@@ -12,10 +12,12 @@
 - [x] Only show cards the current player should see
 - [ ] Integration with backend functionality
     - [x] Only show cards on table which have been revealed
-    - [ ] Give players functionality to make be
+    - [x] Give players functionality to make bet
         - [x] Betting form component
         - [x] Send message to backend when bet is made
-        - [ ] Update frontend and move onto next player
+        - [x] Update frontend and move onto next player
+            - [x] Fix bug where update to player whos turn it is to bet is not reflected in render
+    - [ ] Allow players to fold
 - [ ] Niceties
     - [ ] Eliminate repetition in styled components for game
     - [ ] Eliminate repetition in PlayerInGame component
