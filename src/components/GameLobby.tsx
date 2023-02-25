@@ -16,7 +16,7 @@ const GameLobby = ({ game }: { game: Game}) => {
 
     const handleStart = () => {
         const startGameMessage: StartGameMessage = {
-            gameId: game.id
+            startingGameId: game.id
         }
         ws.send(JSON.stringify(startGameMessage))
     }

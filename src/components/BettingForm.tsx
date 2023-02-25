@@ -10,7 +10,7 @@ const BettingForm = ({minBet, maxBet, playerId}: {minBet: number, maxBet: number
         evt.preventDefault()
         console.log("Submitting bet")
         const betMessage: BetMessage = {
-            playerId,
+            bettingPlayerId: playerId,
             amount: bet
         }
         ws?.send(JSON.stringify(betMessage))
