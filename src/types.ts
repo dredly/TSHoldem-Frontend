@@ -2,6 +2,13 @@ export type Role = 'SMALL_BLIND' | 'BIG_BLIND' | 'OTHER'
 
 export type Suit = 'SPADES' | 'HEARTS' | 'DIAMONDS' | 'CLUBS'
 
+export type BettingRound = "BLINDS" | "FLOP" | "TURN" | "RIVER";
+
+export interface BettingInfo {
+    round: BettingRound
+    isSecondPass: boolean
+}
+
 export interface Card {
     rank: number,
     suit: Suit
@@ -25,7 +32,8 @@ export interface Game {
     cardsOnTable: Card[]
     pot: number,
     betAmount: number,
-    started: boolean
+    started: boolean,
+    bettingInfo?: BettingInfo
 }
 
 export interface CreatePlayerMessage {

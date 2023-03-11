@@ -19,7 +19,8 @@
         - [x] Update frontend and move onto next player
             - [x] Fix bug where update to player whos turn it is to bet is not reflected in render
     - [x] Allow players to fold
-    - [ ] Fix weirdness with detecting when round of betting is over (might involve backend)
+    - [x] Restrict players to only calling or folding for second pass of betting
+    - [ ] make sure round actually ends when its supposed to
     - [ ] Reveal the flop when first round of betting is over
 - [ ] Niceties
     - [ ] Eliminate repetition in styled components for game
