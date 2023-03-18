@@ -11,7 +11,7 @@
     - [x] Show player cards and money
 - [x] Only show cards the current player should see
 - [x] Update client messages to be consistent with backend
-- [ ] Integration with backend functionality
+- [x] Integration with backend functionality
     - [x] Only show cards on table which have been revealed
     - [x] Give players functionality to make bet
         - [x] Betting form component
@@ -20,8 +20,11 @@
             - [x] Fix bug where update to player whos turn it is to bet is not reflected in render
     - [x] Allow players to fold
     - [x] Restrict players to only calling or folding for second pass of betting
-    - [ ] make sure round actually ends when its supposed to
-    - [ ] Reveal the flop when first round of betting is over
+    - [x] BUGFIX last player to bet not updating properly
+    - [x] BUGFIX make sure round actually ends when its supposed to
+    - [x] Reveal the flop when first round of betting is over
+    - [x] Handle end of a round
+- [ ] MVP deployment
 - [ ] Niceties
     - [ ] Eliminate repetition in styled components for game
     - [ ] Eliminate repetition in PlayerInGame component
