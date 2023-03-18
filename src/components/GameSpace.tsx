@@ -8,7 +8,6 @@ const GameSpace = () => {
 
     return (
         <div>
-            <h1>{game.players[0].name}'s game</h1>
             {game.started ? <GameInPlay game={game}/> : <GameLobby game={game}/>}
         </div>
     )

@@ -2,7 +2,7 @@ import { useEffectOnceWhen } from "rooks";
 import { useState } from "react";
 import NameEntry from "./components/NameEntry"
 import { parseServerMessage } from "./parsers";
-import { isGameCreatedMessage, isGameJoinedMessage, isGameStartedMessage, isPlayerCreatedMessage } from "./typeGuards";
+import { isGameCreatedMessage, isGameJoinedMessage, isGameStartedMessage, isGameUpdatedMessage, isPlayerCreatedMessage } from "./typeGuards";
 import usePlayerStore from "./state/playerStore";
 import useWebSocketStore from "./state/webSocketStore";
 import useGameStore from "./state/gameStore";
@@ -30,7 +30,6 @@ const App = () => {
   }
   ws.onmessage = message => {
     console.log("m e s s a g e    r e c e i v e d")
-    console.log(message.data)
     try {
       const obj = JSON.parse(message.data)
       try {
@@ -51,6 +50,10 @@ const App = () => {
           console.log("GAME STARTED")
           updateGame(serverMessage.gameStarted)
           updatePlayingOrder(serverMessage.gameStarted.players.map(p => p.id))
+        }
+        if (isGameUpdatedMessage(serverMessage)) {
+          console.log("GAME UPDATED")
+          updateGame(serverMessage.gameUpdated)
         }
       } catch (err) {
         if (err instanceof Error) {

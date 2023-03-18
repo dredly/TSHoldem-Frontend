@@ -17,7 +17,7 @@ const StartOrJoin = () => {
     }
 
     const handleHost = () => {
-        const createGameMessage: CreateGameMessage = { playerId }
+        const createGameMessage: CreateGameMessage = { creatorId: playerId }
         ws.send(JSON.stringify(createGameMessage))
     }
 

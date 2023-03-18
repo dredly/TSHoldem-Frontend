@@ -24,6 +24,7 @@ const GameInPlay = ({ game }: { game: Game}) => {
     // Temporarily displying 5 cards from deck just to test out styling
     return (
         <>
+            <h1>{playersInOriginalOrder[0].name}'s game</h1>
             <GameContainer>
                 <p>Money in pot = <strong>${game.pot}</strong></p>
                 <TopSeats playersInOriginalOrder={playersInOriginalOrder}/>
@@ -31,7 +32,7 @@ const GameInPlay = ({ game }: { game: Game}) => {
                     <LeftSeat playersInOriginalOrder={playersInOriginalOrder}/>
                     <GameTable>
                         <BackOfCard />
-                        {game.deck.slice(0, 5).map(c => <PlayingCard card={c} key={c.rank.toString() + c.suit}/>)}
+                        {game.cardsOnTable.map(c => <PlayingCard card={c} key={c.rank.toString() + c.suit}/>)}
                     </GameTable>
                     <RightSeat playersInOriginalOrder={playersInOriginalOrder}/>
                 </HorizontalContainer>
