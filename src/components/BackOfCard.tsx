@@ -1,5 +1,5 @@
 const BackOfCard = () => {
-    return <img src={"/src/assets/back.svg"} width="125px"></img>
+    return <img src={"/back.svg"} width="125px"></img>
 }
 
 export default BackOfCard
