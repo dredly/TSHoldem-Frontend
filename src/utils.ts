@@ -23,5 +23,5 @@ const getRankName = (rank: number, mapping: Map<number, String>): String => {
 }
 
 export const getAssetForCard = (card: Card): String => {
-    return "/src/assets/" + getRankName(card.rank, rankNameMapping) + "_of_" + card.suit.toLowerCase() + ".svg"
+    return "/" + getRankName(card.rank, rankNameMapping) + "_of_" + card.suit.toLowerCase() + ".svg"
 }
