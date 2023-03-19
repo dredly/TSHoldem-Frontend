@@ -24,7 +24,7 @@
     - [x] BUGFIX make sure round actually ends when its supposed to
     - [x] Reveal the flop when first round of betting is over
     - [x] Handle end of a round
-- [ ] MVP deployment
+- [ ] Move assets into public folder and make sure they work when deployed
 - [ ] Niceties
     - [ ] Eliminate repetition in styled components for game
     - [ ] Eliminate repetition in PlayerInGame component
