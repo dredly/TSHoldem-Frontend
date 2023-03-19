@@ -16,8 +16,10 @@ const App = () => {
   const updateGame = useGameStore(state => state.updateGame)
   const updatePlayingOrder = useGameStore(state => state.updateOriginalPlayerOrder)
 
+  const wsUrl = window.location.href.includes("tsholdem") ? "ws://tsholdem-v2.fly.dev" : "ws://localhost:8080"
+
   useEffectOnceWhen(() => {
-    updateWs(new WebSocket("ws://localhost:8080"))
+    updateWs(new WebSocket(wsUrl))
     updatePlayer(null)
     updateGame(null)
     updatePlayingOrder([])
